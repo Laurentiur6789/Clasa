@@ -1,0 +1,37 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int a[101], n;
+ifstream f("vector.in");
+void citire()
+{
+    int i;
+    f>>n;
+
+    for (i=1; i<=n; ++i)
+    {
+        f>>a[i];
+    }
+}
+int suma(int p, int  q)
+{
+    int m, s1, s2;
+    if (q-p==0)
+        return a[p];
+    else
+    {
+        m=(p+q)/2;
+        s1=suma(p,m);
+        s2=suma(m+1,q);
+        return s1+s2;
+    }
+
+
+}
+int main()
+{
+    citire();
+    cout<<suma(1,n);
+    return 0;
+}
+
