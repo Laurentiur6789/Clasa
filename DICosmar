@@ -1,0 +1,39 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int a[101], n,x;
+ifstream f("vector.in");
+void citire()
+{
+    int i;
+    f>>n;
+    f>>x;
+    for (i=1; i<=n; ++i)
+    {
+        f>>a[i];
+    }
+}
+int cautare(int p, int  q)
+{
+int m;
+if (p<=q)
+{
+    m=(p+q)/2;
+    if (a[m]==x)
+        return m;
+    else
+        if (x<a[m])
+        return cautare(p, m-1);
+    else
+        return cautare(m+1,q);
+
+}
+else
+    return 0;
+}
+int main()
+{
+    citire();
+    cout<<cautare(1,n);
+    return 0;
+}
