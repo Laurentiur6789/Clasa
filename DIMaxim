@@ -1,0 +1,42 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int a[101], n;
+ifstream f("vector.in");
+void citire()
+{
+    int i;
+    f>>n;
+    for (i=1; i<=n; ++i)
+    {
+        f>>a[i];
+    }
+}
+int divide(int p, int  q)
+{
+    int m, i, j;
+    if (q==p)
+        return a[p];
+    else
+        if (q-p==1)
+    {
+        if (a[p]<a[q])
+            return a[q];
+        else
+            return a[p];
+    }
+        else
+        {
+            m=(p+q)/2;
+          int max1=divide(p,m);
+           int  max2=divide(m+1,q);
+            return max(max1,max2);
+        }
+
+}
+int main()
+{
+    citire();
+    cout<<divide(1,n);
+    return 0;
+}
